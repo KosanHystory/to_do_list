@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KosanHystory</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Daftar Tugas Harian</h1>
+
+        <!-- Input Tugas Baru -->
+        <div class="flex flex-col space-y-3 mb-6">
+            <div class="flex items-center space-x-3">
+                <input type="text" id="taskInput" placeholder="Tambahkan tugas baru..."
+                       class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button id="addTaskButton"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                    Tambah
+                </button>
+            </div>
+            <button id="breakdownTaskButton"
+                    class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-5 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center">
+                <span id="breakdownButtonText">✨ Pecah Tugas</span>
+                <div id="breakdownSpinner" class="spinner ml-2 hidden"></div>
+            </button>
+        </div>
+
+        <!-- Daftar Tugas -->
+        <div id="taskList" class="space-y-3">
+            <!-- Tugas akan ditambahkan di sini oleh JavaScript -->
+        </div>
+
+        <!-- User ID Display -->
+        <div class="mt-6 text-center text-sm text-gray-500">
+            ID Pengguna Anda: <span id="userIdDisplay" class="font-mono text-gray-700 break-all">Memuat...</span>
+        </div>
+    </div>
+
+    <!-- Modal untuk Konfirmasi Hapus -->
+    <div id="deleteConfirmModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeDeleteModal">&times;</span>
+            <h2 class="text-xl font-bold mb-4">Konfirmasi Hapus</h2>
+            <p>Apakah Anda yakin ingin menghapus tugas ini?</p>
+            <div class="flex justify-end space-x-3 mt-6">
+                <button id="cancelDeleteButton" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg">Batal</button>
+                <button id="confirmDeleteButton" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Edit Tugas -->
+    <div id="editTaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeEditModal">&times;</span>
+            <h2 class="text-xl font-bold mb-4">Edit Tugas</h2>
+            <input type="text" id="editTaskInput" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4">
+            <div class="flex justify-end space-x-3 mt-6">
+                <button id="cancelEditButton" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg">Batal</button>
+                <button id="saveEditButton" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Pecah Tugas -->
+    <div id="breakdownModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeBreakdownModal">&times;</span>
+            <h2 class="text-xl font-bold mb-4">Sub-Tugas yang Disarankan</h2>
+            <div id="subTaskList" class="space-y-2 mb-4">
+                <!-- Sub-tugas akan ditambahkan di sini oleh JavaScript -->
+            </div>
+            <div class="flex justify-end space-x-3 mt-6">
+                <button id="cancelBreakdownButton" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg">Batal</button>
+                <button id="addSelectedSubtasksButton" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">Tambah Tugas Terpilih</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+<!-- made with tears and sweat -->
